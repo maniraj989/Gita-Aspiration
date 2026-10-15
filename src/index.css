@@ -325,6 +325,14 @@ a {
   display: none;
 }
 
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 35, 39, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+}
+
 /* ==========================================================================
    HERO SECTION
    ========================================================================== */
@@ -1450,29 +1458,49 @@ a {
 /* ==========================================================================
    RESPONSIVE DESIGN (TABLET & MOBILE)
    ========================================================================== */
+
+/* Prevent horizontal overflow across all viewports */
+html, body, .site-wrapper {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Laptops / Small Desktops (<= 1080px) */
 @media (max-width: 1080px) {
+  .container {
+    max-width: 960px;
+  }
+
   .treatments-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
   
   .hero-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
   }
   
   .hero-title {
-    font-size: 2.75rem;
+    font-size: 2.85rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 0.9fr 1.1fr 0.8fr;
+    gap: 30px;
   }
 }
 
+/* Tablets Landscape & Portrait (<= 860px) */
 @media (max-width: 860px) {
   .header-nav, .header-action {
     display: none;
   }
   
   .mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   /* Mobile Menu Drawer */
@@ -1486,97 +1514,436 @@ a {
     background-color: #ffffff;
     border-bottom: 2px solid var(--color-teal-border);
     padding: 20px 24px 28px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    gap: 16px;
+    box-shadow: 0 14px 35px rgba(7, 57, 63, 0.15);
+    gap: 14px;
     z-index: 999;
+    animation: fadeIn 0.2s ease-out;
   }
   
   .mobile-nav-drawer .nav-link {
     font-size: 1.05rem;
-    padding: 10px 0;
+    font-weight: 600;
+    padding: 12px 0;
     border-bottom: 1px solid #f0f7f7;
+    color: var(--color-text-heading);
+  }
+
+  .mobile-nav-drawer .nav-link:active,
+  .mobile-nav-drawer .nav-link:hover {
+    color: var(--color-primary);
   }
   
   .mobile-nav-drawer .btn {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 12px;
+    padding: 13px;
+    font-size: 1rem;
+  }
+
+  .hero-section {
+    padding: 40px 0 50px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     text-align: left;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-visual-wrapper {
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-floating-badge {
+    right: 10px;
+    bottom: 20px;
+    max-width: 90%;
   }
   
   .hero-benefits-row {
     flex-wrap: wrap;
     gap: 16px;
   }
+
+  .treatments-section,
+  .about-section,
+  .doctor-section,
+  .reviews-section,
+  .appointment-location-section {
+    padding: 65px 0;
+  }
   
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
+  }
+
+  .about-content {
+    padding-left: 0;
+  }
+
+  .about-img-frame {
+    max-width: 520px;
+    margin: 0 auto;
   }
   
   .doctor-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
+  }
+
+  .doctor-visual {
+    order: 2;
+  }
+
+  .doctor-content {
+    order: 1;
+  }
+
+  .doctor-img-container {
+    max-width: 380px;
+    margin: 0 auto;
   }
   
   .reviews-top-bar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
+  }
+
+  .google-review-badge {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
   
   .reviews-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   
   .appointment-location-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .booking-panel {
+    padding: 36px 28px;
+  }
+
+  .location-panel {
+    padding: 34px 28px;
   }
   
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 32px;
   }
-  
-  .credit-strip-inner {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
+
+  .footer-col-brand {
+    padding-right: 0;
   }
 }
 
-@media (max-width: 600px) {
+/* Small Tablets & Large Phablets (<= 680px) */
+@media (max-width: 680px) {
   .treatments-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  
+
+  .treatment-card-body {
+    padding: 14px 12px;
+  }
+
+  .treatment-card-title {
+    font-size: 0.875rem;
+    min-height: auto;
+    margin-bottom: 6px;
+  }
+
+  .treatment-card-desc {
+    font-size: 0.775rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .treatment-card-img-wrapper {
+    height: 100px;
+  }
+}
+
+/* Mobile Phones (<= 540px) */
+@media (max-width: 540px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-inner {
+    height: 66px;
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+
+  .mobile-nav-drawer {
+    top: 66px;
+    padding: 16px 20px 24px;
+  }
+
+  .clinic-logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .clinic-logo-title {
+    font-size: 1rem;
+    gap: 4px;
+  }
+
+  .clinic-logo-pvt {
+    font-size: 0.6875rem;
+  }
+
+  .clinic-logo-subtitle {
+    font-size: 0.625rem;
+  }
+
+  .section-heading,
+  .about-heading,
+  .location-heading {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .hero-title {
+    font-size: 2.15rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    padding: 13px;
+  }
+
+  .hero-benefits-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  .hero-benefit-item {
+    gap: 10px;
+  }
+
+  .hero-benefit-text {
+    font-size: 0.8125rem;
+  }
+
+  .hero-floating-badge {
+    right: 8px;
+    bottom: 12px;
+    padding: 8px 14px;
+  }
+
+  .hero-floating-badge .script-line-1 {
+    font-size: 1.25rem;
+  }
+
+  .hero-floating-badge .script-line-2 {
+    font-size: 1.15rem;
+  }
+
+  .about-desc,
+  .doctor-bio {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  .about-features-list {
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  .about-feature-item {
+    gap: 12px;
+  }
+
+  .about-feature-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-feature-title {
+    font-size: 0.9375rem;
+  }
+
+  .about-feature-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .about-content .btn,
+  .doctor-content .btn {
+    width: 100%;
+    padding: 13px;
+  }
+
+  .doctor-name {
+    font-size: 2rem;
+  }
+
+  .doctor-designation {
+    font-size: 0.9375rem;
+    margin-bottom: 16px;
+  }
+
+  .google-review-badge {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-read-reviews {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .review-card {
+    padding: 22px 18px;
+  }
+
+  .booking-panel {
+    padding: 26px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .booking-heading {
+    font-size: 1.65rem;
+    margin-bottom: 20px;
+  }
+
   .form-row-2 {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
-  
+
+  .btn-submit-booking {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  .location-panel {
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .location-map-wrapper {
+    height: 190px;
+    margin-bottom: 16px;
+  }
+
   .location-contacts-row {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
-  
+
+  .contact-action-card {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 12px 14px;
+    gap: 14px;
+  }
+
+  .contact-action-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .contact-action-value {
+    font-size: 0.8125rem;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
-  
+
   .footer-bottom-inner {
     flex-direction: column;
     gap: 12px;
     text-align: center;
   }
-  
-  .hero-title {
-    font-size: 2.35rem;
-  }
-  
-  .hero-cta-group {
+
+  .credit-strip-inner {
     flex-direction: column;
-    align-items: stretch;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.775rem;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-header {
+    padding: 18px 20px 14px;
+  }
+
+  .modal-body {
+    padding: 18px 20px;
+  }
+}
+
+/* Small Smart Phones (<= 380px) */
+@media (max-width: 380px) {
+  .treatments-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .treatment-card-img-wrapper {
+    height: 120px;
+  }
+
+  .treatment-card-title {
+    font-size: 0.95rem;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+  }
+
+  .clinic-brand {
+    gap: 8px;
+  }
+
+  .clinic-logo-title {
+    font-size: 0.9rem;
   }
 }
