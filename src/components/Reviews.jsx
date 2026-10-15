@@ -73,7 +73,7 @@ export default function Reviews() {
             </div>
 
             <a 
-              href="https://www.google.com/maps/search/Devichowk+10,+Janakpur,+Nepal+Gita+Aspirations" 
+              href="https://share.google/0g0K1rwNaATKd1V0v" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn-read-reviews"

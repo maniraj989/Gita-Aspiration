@@ -105,20 +105,20 @@ export default function Footer({ onNavClick }) {
             <h4 className="footer-col-title">Follow Us</h4>
             <div className="footer-social-links">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=100063763670297" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="footer-social-btn"
-                aria-label="Facebook Page"
+                aria-label="Gita Aspirations Facebook Page"
               >
                 <FacebookIcon size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/gita_aspirations" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="footer-social-btn"
-                aria-label="Instagram Profile"
+                aria-label="Gita Aspirations Instagram Profile"
               >
                 <InstagramIcon size={18} />
               </a>

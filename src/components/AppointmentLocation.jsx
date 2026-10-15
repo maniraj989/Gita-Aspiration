@@ -303,11 +303,11 @@ export default function AppointmentLocation({ selectedService }) {
               </a>
 
               <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=Devichowk+10,+Janakpur,+Nepal" 
+                href="https://share.google/0g0K1rwNaATKd1V0v" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="contact-action-card"
-                aria-label="Get directions to Devichowk 10, Janakpur, Nepal"
+                aria-label="Get directions to Gita Aspirations Pvt Ltd on Google Maps"
               >
                 <div className="contact-action-icon">
                   <MapPin size={16} />
