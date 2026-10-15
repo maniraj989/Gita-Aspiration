@@ -11,7 +11,7 @@ export default function DeveloperCreditStrip() {
           <div className="credit-strip-right">
             Developed by{' '}
             <a 
-              href="https://mmdigitalgarage.com/" 
+              href="https://www.mmdigitalgarage.tech/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="credit-link"
