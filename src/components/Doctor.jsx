@@ -22,15 +22,6 @@ export default function Doctor({ onViewProfile }) {
               Dr. Saurav Karna provides specialised care for a wide range of oral, facial and jaw conditions. With a patient-centred approach, he focuses on delivering safe, effective and personalised treatments to help you achieve better health, function and confidence.
             </p>
 
-            {/* Doctor's Signature Graphic */}
-            <div className="doctor-signature-wrap">
-              <img 
-                src="/assets/doctor_signature.png" 
-                alt="Signature of Dr. Saurav Karna" 
-                className="doctor-signature-img"
-              />
-            </div>
-
             <button 
               onClick={onViewProfile} 
               className="btn btn-primary"
